@@ -14,8 +14,6 @@ const corsOptions = {
   },
 };
 
-const sub = "test";
-
 const app = express();
 app.use(cors(corsOptions));
 app.use(express.json()); // json parse
