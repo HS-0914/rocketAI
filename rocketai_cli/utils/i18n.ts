@@ -1,7 +1,7 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import krTranslations from '@/public/translations/ko_KR.json';
-import usTranslations from './../public/translations/en_US.json';
+import usTranslations from '../public/translations/en_US.json';
 
 const resources = {
   ko_KR: {
