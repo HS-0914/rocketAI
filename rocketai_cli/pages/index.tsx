@@ -9,6 +9,7 @@ export default function Home() {
   const chatScroll = useRef<HTMLDivElement>(null);
   const chatFocus = useRef<HTMLInputElement>(null);
   const { t, i18n } = useTranslation();
+  const gittest = "test";
 
   useEffect(() => {
     if(chatFocus.current) chatFocus.current.focus();
