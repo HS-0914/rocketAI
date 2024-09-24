@@ -22,7 +22,7 @@ export default function Home() {
 
   const sendChat = async () => {
     console.log('fetchh');
-    const res = await fetch('https://18.118.193.69:443',{
+    const res = await fetch('http://18.118.193.69:443',{
       method: 'POST', headers: {
         "Content-Type": "application/json",
         Accept: "application/json"
