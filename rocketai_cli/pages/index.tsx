@@ -8,8 +8,7 @@ export default function Home() {
   const sendList = useRef<string[]>([]); // 빈 배열 선언 시 앞에 <type[]> 넣기
   const chatScroll = useRef<HTMLDivElement>(null);
   const chatFocus = useRef<HTMLInputElement>(null);
-  const { t, i18n } = useTranslation();
-  const gittest = "test";
+  const { t } = useTranslation();
 
   useEffect(() => {
     if(chatFocus.current) chatFocus.current.focus();
