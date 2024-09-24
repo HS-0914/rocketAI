@@ -90,3 +90,4 @@ export default function Home() {
 // usestate - https://www.youtube.com/watch?v=G3qglTF-fFI&list=PLZ5oZ2KmQEYjwhSxjB_74PoU6pmFzgVMO&t=953s
 // useRef - https://driip.me/7126d5d5-1937-44a8-98ed-f9065a7c35b5
 // 스크롤 - https://bayaa.tistory.com/16
+// https - https://kagrin97-blog.vercel.app/server/ec2-httpTohttps
