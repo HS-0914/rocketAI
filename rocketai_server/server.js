@@ -14,6 +14,7 @@ const corsOptions = {
   },
 };
 
+const sub = "test";
 
 const app = express();
 app.use(cors(corsOptions));
