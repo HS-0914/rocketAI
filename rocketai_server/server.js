@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 
-const whitelist = ["http://localhost:3000"];
+const whitelist = ["https://rocket-ai-topaz.vercel.app"];
 
 
 const corsOptions = {
@@ -18,7 +18,7 @@ const app = express();
 app.use(cors(corsOptions));
 app.use(express.json()); // json parse
 
-app.listen(8080, () => {
+app.listen(3000, () => {
     console.log('listening.........');
 });
 
