@@ -10,13 +10,11 @@ export default function Home() {
     sendList: string[];
     chat: string;
   }
-  
+
   const [chatList, setChatList] = useState<ChatState>({
     sendList: [],
     chat: ''
   });
-  // const [sendList, setSendList] = useState<string[]>([]);
-  const sendList = useRef<string[]>([]);
   const chatScroll = useRef<HTMLDivElement>(null);
   const chatFocus = useRef<HTMLInputElement>(null);
   const { t } = useTranslation();
@@ -29,7 +27,7 @@ export default function Home() {
     if(chatScroll.current){
       chatScroll.current.scrollTop = chatScroll.current.scrollHeight;
     }
-  }, [sendList])
+  }, [chatList.sendList])
 
   const sendChat = async () => {
     const res = await fetch('https://port-0-rocketai-m1gl1p3vd3693615.sel4.cloudtype.app',{
@@ -52,7 +50,7 @@ export default function Home() {
           <div className="flex-grow overflow-y-auto p-4" ref={ chatScroll }>
             
             {
-              sendList.current.map((e, i) => {
+              chatList.sendList.map((e, i) => {
                 if ( i%2==0 ) {
                   return (
                     <div className="chat chat-end items-center" key={ i }>
