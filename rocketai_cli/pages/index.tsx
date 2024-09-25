@@ -2,9 +2,19 @@ import { useEffect, useRef, useState } from "react";
 import TopHeader from "./headerLayout";
 import { useTranslation } from "react-i18next";
 
+
+
 export default function Home() {
 
-  const [chat, setChat] = useState('');
+  interface ChatState {
+    sendList: string[];
+    chat: string;
+  }
+  
+  const [chatList, setChatList] = useState<ChatState>({
+    sendList: [],
+    chat: ''
+  });
   // const [sendList, setSendList] = useState<string[]>([]);
   const sendList = useRef<string[]>([]);
   const chatScroll = useRef<HTMLDivElement>(null);
@@ -16,7 +26,9 @@ export default function Home() {
   }, [])
 
   useEffect(() => {
-    
+    if(chatScroll.current){
+      chatScroll.current.scrollTop = chatScroll.current.scrollHeight;
+    }
   }, [sendList])
 
   const sendChat = async () => {
@@ -25,18 +37,12 @@ export default function Home() {
         "Content-Type": "application/json",
         Accept: "application/json"
       },
-      body: JSON.stringify({ msg: chat })
+      body: JSON.stringify({ msg: chatList.chat })
     });
     const result = await res.json();
-    // setSendList((prev)=>{
-    //   return([...prev, chat, result.msg])
-    // });
-    setChat('');
-
-    sendList.current = [...sendList.current, chat, result.msg];
-    if(chatScroll.current){
-      chatScroll.current.scrollTop = chatScroll.current.scrollHeight;
-    }
+    setChatList((prev)=>{
+      return {sendList: [...prev.sendList, chatList.chat, result.msg], chat: ''}
+    }); 
   }
   console.log('render');
   return (
@@ -74,12 +80,14 @@ export default function Home() {
                 placeholder= {t('placeholder')}
                 className="input input-bordered join-item flex-grow"
                 onChange={(e)=> {
-                  setChat(e.target.value);
+                  setChatList((prev)=>{
+                    return {sendList: [...prev.sendList], chat: e.target.value}
+                  });
                 }}
                 onKeyUp={(e) => { //엔터를 이용
-                  if (e.key === 'Enter' && !/^\s*$/.test(chat)) sendChat()
+                  if (e.key === 'Enter' && !/^\s*$/.test(chatList.chat)) sendChat()
                 }}
-                value={ chat }
+                value={ chatList.chat }
                 ref={ chatFocus }
               />
               <button className="btn btn-primary join-item" onClick={sendChat}>{t('sending')}</button>
