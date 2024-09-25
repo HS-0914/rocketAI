@@ -1,8 +1,9 @@
 import express from 'express';
 import cors from 'cors';
+import dotenv from "dotenv";
 
-const whitelist = ["https://rocket-ai-topaz.vercel.app"];
-
+dotenv.config();
+const whitelist = process.env.WHITELIST;
 
 const corsOptions = {
   origin: (origin, callback) => { 
@@ -18,7 +19,7 @@ const app = express();
 app.use(cors(corsOptions));
 app.use(express.json()); // json parse
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
     console.log('listening........');
 });
 
