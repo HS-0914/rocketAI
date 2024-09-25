@@ -21,7 +21,7 @@ app.use(express.json()); // json parse
 
 app.listen(process.env.PORT, () => {
     console.log(process.env.PORT);
-    console.log('listening........');
+    console.log('Listening');
 });
 
 app.post('/', (req, res)=>{
