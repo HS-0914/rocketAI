@@ -92,7 +92,7 @@ export default function Home() {
     </TopHeader>
   );
 }
-// fetch - https://www.youtube.com/watch?v=oAbsd50Uh7o 
+// fetch - https://www.youtube.com/watch?v=oAbsd50Uh7o
 // 채팅 - https://velog.io/@hkj0206/Socket.io-Next.js-%EB%A1%9C-%EB%A7%8C%EB%93%A0-%EC%8B%A4%EC%8B%9C%EA%B0%84-%EC%B1%84%ED%8C%85%EC%97%90%EC%84%9C-%EC%83%9D%EA%B8%B0%EB%8A%94-%EB%8B%A4%EC%96%91%ED%95%9C-%EB%B2%84%EA%B7%B8-%EA%B7%B8%EB%A6%AC%EA%B3%A0-%ED%95%B4%EA%B2%B0-%EA%B3%BC%EC%A0%95
 // usestate - https://www.youtube.com/watch?v=G3qglTF-fFI&list=PLZ5oZ2KmQEYjwhSxjB_74PoU6pmFzgVMO&t=953s
 // useRef - https://driip.me/7126d5d5-1937-44a8-98ed-f9065a7c35b5
