@@ -29,9 +29,10 @@ export default function Home() {
     });
     const result = await res.json();
     // setSendList((prev)=>{
-    //   setChat('');
     //   return([...prev, chat, result.msg])
     // });
+    setChat('');
+
     sendList.current = [...sendList.current, chat, result.msg];
     if(chatScroll.current){
       chatScroll.current.scrollTop = chatScroll.current.scrollHeight;
