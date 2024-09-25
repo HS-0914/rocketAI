@@ -1,29 +1,24 @@
-import express from 'express';
-import cors from 'cors';
-import dotenv from "dotenv";
-
-dotenv.config();
-const whitelist = process.env.WHITELIST;
-
-const corsOptions = {
-  origin: (origin, callback) => { 
-    if (whitelist.indexOf(origin) !== -1) { // 만일 whitelist 배열에 origin인자가 있을 경우
-      callback(null, true); // cors 허용
-    } else {
-      callback(new Error("Not Allowed Origin!")); // cors 비허용
-    }
-  },
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-
-const app = express();
-app.use(cors(corsOptions));
-app.use(express.json()); // json parse
-
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const cors_1 = __importDefault(require("cors"));
+const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
+const whitelist = process.env.WHITELIST;
+const corsOptions = {
+    origin: whitelist,
+    credentials: true,
+};
+const app = (0, express_1.default)();
+app.use((0, cors_1.default)(corsOptions));
+app.use(express_1.default.json()); // json parse
 app.listen(process.env.PORT, () => {
     console.log('Listening');
 });
-
-app.post('/', (req, res)=>{
+app.post('/', (req, res) => {
     const insertHello = req.body.msg + " + Hello wolrd!";
     res.json({ msg: insertHello });
 });
