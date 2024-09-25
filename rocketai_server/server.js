@@ -20,7 +20,6 @@ app.use(cors(corsOptions));
 app.use(express.json()); // json parse
 
 app.listen(process.env.PORT, () => {
-    console.log(process.env.PORT);
     console.log('Listening');
 });
 
