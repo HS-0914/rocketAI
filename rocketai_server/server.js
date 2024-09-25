@@ -19,7 +19,7 @@ app.use(cors(corsOptions));
 app.use(express.json()); // json parse
 
 app.listen(3000, () => {
-    console.log('listening.........');
+    console.log('listening........2.');
 });
 
 app.post('/', (req, res)=>{
