@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 export default function Home() {
 
   const [chat, setChat] = useState('');
-  const sendList = useRef<string[]>([]); // 빈 배열 선언 시 앞에 <type[]> 넣기
+  const [sendList, setSendList] = useState<String[]>([]);
   const chatScroll = useRef<HTMLDivElement>(null);
   const chatFocus = useRef<HTMLInputElement>(null);
   const { t } = useTranslation();
@@ -18,10 +18,9 @@ export default function Home() {
     if(chatScroll.current){
       chatScroll.current.scrollTop = chatScroll.current.scrollHeight;
     }
-  }, [sendList.current])
+  }, [sendList])
 
   const sendChat = async () => {
-    console.log('fetchh');
     const res = await fetch('https://port-0-rocketai-m1gl1p3vd3693615.sel4.cloudtype.app',{
       method: 'POST', headers: {
         "Content-Type": "application/json",
@@ -30,10 +29,12 @@ export default function Home() {
       body: JSON.stringify({ msg: chat })
     });
     const result = await res.json();
-    setChat('');
-    sendList.current = [...sendList.current, chat, result.msg];
+    setSendList((prev)=>{
+      setChat('');
+      return([...prev, chat, result.msg])
+    });
   }
-
+  console.log('render');
   return (
     <TopHeader>
       <div className="flex flex-grow items-center justify-center p-4">
@@ -41,7 +42,7 @@ export default function Home() {
           <div className="flex-grow overflow-y-auto p-4" ref={ chatScroll }>
             
             {
-              sendList.current.map((e, i) => {
+              sendList.map((e, i) => {
                 if ( i%2==0 ) {
                   return (
                     <div className="chat chat-end items-center" key={ i }>
