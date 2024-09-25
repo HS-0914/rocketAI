@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 
-const whitelist = ["https://rocket-ai-topaz.vercel.app"];
+const whitelist = ["https://rockets-ai-topaz.vercel.app"];
 
 
 const corsOptions = {
