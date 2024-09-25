@@ -5,7 +5,8 @@ import { useTranslation } from "react-i18next";
 export default function Home() {
 
   const [chat, setChat] = useState('');
-  const [sendList, setSendList] = useState<string[]>([]);
+  // const [sendList, setSendList] = useState<string[]>([]);
+  const sendList = useRef<string[]>([]);
   const chatScroll = useRef<HTMLDivElement>(null);
   const chatFocus = useRef<HTMLInputElement>(null);
   const { t } = useTranslation();
@@ -15,9 +16,7 @@ export default function Home() {
   }, [])
 
   useEffect(() => {
-    if(chatScroll.current){
-      chatScroll.current.scrollTop = chatScroll.current.scrollHeight;
-    }
+    
   }, [sendList])
 
   const sendChat = async () => {
@@ -29,10 +28,14 @@ export default function Home() {
       body: JSON.stringify({ msg: chat })
     });
     const result = await res.json();
-    setSendList((prev)=>{
-      setChat('');
-      return([...prev, chat, result.msg])
-    });
+    // setSendList((prev)=>{
+    //   setChat('');
+    //   return([...prev, chat, result.msg])
+    // });
+    sendList.current = [...sendList.current, chat, result.msg];
+    if(chatScroll.current){
+      chatScroll.current.scrollTop = chatScroll.current.scrollHeight;
+    }
   }
   console.log('render');
   return (
@@ -42,7 +45,7 @@ export default function Home() {
           <div className="flex-grow overflow-y-auto p-4" ref={ chatScroll }>
             
             {
-              sendList.map((e, i) => {
+              sendList.current.map((e, i) => {
                 if ( i%2==0 ) {
                   return (
                     <div className="chat chat-end items-center" key={ i }>
