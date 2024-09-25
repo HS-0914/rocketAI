@@ -28,7 +28,7 @@ export default function Home() {
   }, [chatList.sendList])
 
   const sendChat = async () => {
-    const res = await fetch('https://port-0-rocketai-m1gl1p3vd3693615.sel4.cloudtype.app',{
+    const res = await fetch(`${process.env.URL}`,{
       method: 'POST', headers: {
         "Content-Type": "application/json",
         Accept: "application/json"
