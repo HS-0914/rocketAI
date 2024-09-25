@@ -28,7 +28,7 @@ export default function Home() {
   }, [chatList.sendList])
 
   const sendChat = async () => {
-    const res = await fetch(`${process.env.URL}`,{
+    const res = await fetch(`${process.env.NEXT_PUBLIC_URL}`,{
       method: 'POST', headers: {
         "Content-Type": "application/json",
         Accept: "application/json"
@@ -40,7 +40,7 @@ export default function Home() {
       return {sendList: [...prev.sendList, chatList.chat, result.msg], chat: ''}
     }); 
   }
-  
+
   return (
     <TopHeader>
       <div className="flex flex-grow items-center justify-center p-4">
