@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 export default function Home() {
 
   const [chat, setChat] = useState('');
-  const [sendList, setSendList] = useState<String[]>([]);
+  const [sendList, setSendList] = useState<string[]>([]);
   const chatScroll = useRef<HTMLDivElement>(null);
   const chatFocus = useRef<HTMLInputElement>(null);
   const { t } = useTranslation();
