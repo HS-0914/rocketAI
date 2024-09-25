@@ -40,6 +40,7 @@ export default function Home() {
       return {sendList: [...prev.sendList, chatList.chat, result.msg], chat: ''}
     }); 
   }
+  
   return (
     <TopHeader>
       <div className="flex flex-grow items-center justify-center p-4">
