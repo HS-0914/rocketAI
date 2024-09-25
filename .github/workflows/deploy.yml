@@ -3,8 +3,9 @@ on:
   push:
     branches:
       - main
-    paths:
-      - rocketai_server/**
+    paths-ignore:
+      - '**'  # 모든 파일과 디렉토리를 무시
+      - '!rocketai_server/**'  # rocketai_server 디렉토리의 변경은 트리거
 jobs:
   deploy:
     runs-on: ubuntu-latest
