@@ -28,7 +28,7 @@ export default function Home() {
   }, [chatList.sendList])
 
   const sendChat = async () => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_URL}`,{ //env 연습 브라우저에서 확인 가능
+    const res = await fetch("https://port-0-rocketai-m1gl1p3vd3693615.sel4.cloudtype.app",{
       method: 'POST', headers: {
         "Content-Type": "application/json",
         Accept: "application/json"
