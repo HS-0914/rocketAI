@@ -2,8 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import TopHeader from "./headerLayout";
 import { useTranslation } from "react-i18next";
 
-
-
 export default function Home() {
 
   interface ChatState {
@@ -42,13 +40,11 @@ export default function Home() {
       return {sendList: [...prev.sendList, chatList.chat, result.msg], chat: ''}
     }); 
   }
-  console.log('render');
   return (
     <TopHeader>
       <div className="flex flex-grow items-center justify-center p-4">
         <div className="w-full md:max-w-xl lg:max-w-2xl xl:max-w-4xl h-[700px] bg-white rounded-xl shadow-lg flex flex-col">
           <div className="flex-grow overflow-y-auto p-4" ref={ chatScroll }>
-            
             {
               chatList.sendList.map((e, i) => {
                 if ( i%2==0 ) {
