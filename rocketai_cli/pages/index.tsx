@@ -28,17 +28,20 @@ export default function Home() {
   }, [chatList.sendList])
 
   const sendChat = async () => {
-    const res = await fetch("https://port-0-rocketai-m1gl1p3vd3693615.sel4.cloudtype.app",{
-      method: 'POST', headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      },
-      body: JSON.stringify({ msg: chatList.chat })
-    });
-    const result = await res.json();
-    setChatList((prev)=>{
-      return {sendList: [...prev.sendList, chatList.chat, result.msg], chat: ''}
-    }); 
+    const url = process.env.NEXT_PUBLIC_URL;
+    if (url) {
+      const res = await fetch(url,{
+        method: 'POST', headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({ msg: chatList.chat })
+      });
+      const result = await res.json();
+      setChatList((prev)=>{
+        return {sendList: [...prev.sendList, chatList.chat, result.msg], chat: ''}
+      }); 
+    }
   }
 
   return (
